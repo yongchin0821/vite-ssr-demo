@@ -3,8 +3,9 @@ import DefaultLayouts from './layouts/default.vue'
 </script>
 
 <template>
-  <!-- <DefaultLayouts /> -->
-  <router-view></router-view>
+  <DefaultLayouts />
+  <!-- <router-view></router-view> -->
+  <!-- ddsada -->
 </template>
 
 <style>
