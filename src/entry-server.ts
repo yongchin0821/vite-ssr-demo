@@ -15,7 +15,7 @@ export async function render(url: string, manifest: Record<string, string[]>) {
   // itself on ctx.modules. After the render, ctx.modules would contain all the
   // components that have been instantiated during this render call.
   const ctx: SSRContext = {};
-  const html = await renderToString(app, ctx);
+  const appHtml = await renderToString(app, ctx);
   const { collect } = setup(app);
   const cssHtml = collect();
 
@@ -24,7 +24,7 @@ export async function render(url: string, manifest: Record<string, string[]>) {
   // request.
   const preloadLinks = renderPreloadLinks(ctx.modules, manifest);
 
-  return [html, cssHtml, preloadLinks];
+  return { appHtml, cssHtml, preloadLinks };
 }
 
 function renderPreloadLinks(
@@ -36,22 +36,22 @@ function renderPreloadLinks(
   [...modules].map((id) => {
     const files = manifest[id];
     if (files) {
-        files.map((file) => {
-            if (!seen.has(file)) {
-                seen.add(file);
-                const filename = basename(file);
-                if (manifest[filename]) {
-                    manifest[filename].map((depFile) => {
-                        links += renderPreloadLink(depFile);
-                        seen.add(depFile);
-                    });
-                }
+      files.map((file) => {
+        if (!seen.has(file)) {
+          seen.add(file);
+          const filename = basename(file);
+          if (manifest[filename]) {
+            manifest[filename].map((depFile) => {
+              links += renderPreloadLink(depFile);
+              seen.add(depFile);
+            });
+          }
 
-                links += renderPreloadLink(file);
-            }
-        });
+          links += renderPreloadLink(file);
+        }
+      });
     }
-});
+  });
   return links;
 }
 

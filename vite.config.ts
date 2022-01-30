@@ -12,6 +12,7 @@ export default defineConfig({
       dts: true,
       resolvers: [NaiveUiResolver()],
     }),
+    
   ],
   resolve: {
     alias: {

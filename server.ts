@@ -66,14 +66,14 @@ async function createServer(
       let template;
       let render: typeof import("./src/entry-server")["render"];
       if (!isProd) {
-        console.log("dev");
+        // console.log("dev mode");
         // always read fresh template in dev
         template = fs.readFileSync(resolve("index.html"), "utf-8");
         template = await vite.transformIndexHtml(url, template);
         render = (await vite.ssrLoadModule(resolve("./src/entry-server.ts")))
           .render;
       } else {
-        console.log("prod");
+        // console.log("prod mode");
         template = indexProd;
         // @ts-ignore
         render = await import(resolve("./dist/server/entry-server.js")).then(
@@ -83,7 +83,7 @@ async function createServer(
 
       const { appHtml, cssHtml, preloadLinks } = await render(url, manifest);
 
-      console.log("preloadLink:", preloadLinks);
+      // console.log("preloadLink:", preloadLinks);
       const html = template
         .replace(`<!--preload-links-->`, preloadLinks)
         .replace(`<!--ssr-outlet-->`, cssHtml)
@@ -95,7 +95,6 @@ async function createServer(
       if (vite) {
         vite.ssrFixStacktrace(e as Error);
       }
-
       console.log((e as Error).stack);
       res.status(500).end((e as Error).stack);
     }
