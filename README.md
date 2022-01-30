@@ -1,13 +1,13 @@
 # Vue 3 + Typescript + Vite + Naive-ui
 
-踩坑无数，旨在搭建Vue3 版本的ssr。轻量级，开箱即用。
+踩坑无数，旨在搭建Vue3 版本的ssr。✨轻量级，开箱即用✨。
 
 ### 项目参考
-- vite ssr [官方例子](https://github.com/vitejs/vite/tree/main/packages/playground/ssr-vue)
-- naive-ui ssr [官方例子](https://www.naiveui.com/zh-CN/os-theme/docs/ssr)
-- [Ephemeres](https://github.com/Zolyn/Ephemeres)
+- 💡 vite ssr [官方例子](https://github.com/vitejs/vite/tree/main/packages/playground/ssr-vue)
+- 💡 naive-ui ssr [官方例子](https://www.naiveui.com/zh-CN/os-theme/docs/ssr)
+- 💡 [Ephemeres](https://github.com/Zolyn/Ephemeres)
 
-特别感谢[@Zorin](https://github.com/Zolyn)的帮助支持
+特别感谢[@Zorin](https://github.com/Zolyn)的帮助支持❤️
 ### 依赖
 除开vite自建，还需要安装的依赖:  
 (个人理解)  

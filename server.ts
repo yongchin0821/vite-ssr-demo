@@ -83,7 +83,6 @@ async function createServer(
 
       const { appHtml, cssHtml, preloadLinks } = await render(url, manifest);
 
-      // console.log("preloadLink:", preloadLinks);
       const html = template
         .replace(`<!--preload-links-->`, preloadLinks)
         .replace(`<!--ssr-outlet-->`, cssHtml)
