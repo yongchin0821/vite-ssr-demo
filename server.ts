@@ -82,11 +82,10 @@ async function createServer(
       }
 
       const { appHtml, cssHtml, preloadLinks } = await render(url, manifest);
-
       const html = template
         .replace(`<!--preload-links-->`, preloadLinks)
-        .replace(`<!--ssr-outlet-->`, cssHtml)
-        .replace(`<!--app-html-->`, appHtml);
+        .replace(`<!--css-outlet-->`, cssHtml)
+        .replace(`<!--app-outlet-->`, appHtml);
 
       res.status(200).set({ "Content-Type": "text/html" }).end(html);
     } catch (e) {
